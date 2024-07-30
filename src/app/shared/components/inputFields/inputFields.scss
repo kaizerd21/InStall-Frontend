@@ -1,0 +1,14 @@
+.primary-input {
+  background-color: var(--inputfield-color);
+  color: var(--secondary);
+  padding: 1em 1.5em;
+  margin-bottom: 0.8em;
+  border-radius: 9999px;
+  border: none;
+  font-size: 1em;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}

@@ -1,0 +1,19 @@
+.main-page {
+  height: 100vh;
+  display: flex;
+
+  .login-img {
+    width: 50%;
+    background-image: url("../../../assets/login_img_school.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .login {
+    width: 50%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
