@@ -4,11 +4,6 @@ import { LoginPage } from "./domain";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home</div>,
-    children: [],
-  },
-  {
-    path: "login",
     element: <LoginPage />,
     children: [],
   },
