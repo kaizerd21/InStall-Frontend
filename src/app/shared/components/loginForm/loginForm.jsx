@@ -1,21 +1,35 @@
 import { Button } from "primereact/button";
+import Logo from "../../../../assets/img/logo_only.png";
 
 import { InputField } from "../inputFields/inputFields";
 
 export function LoginForm() {
   return (
-    <div className="flex w-[40%] flex-col">
-      <div className="bg-slate-100 h-40 mb-10"></div>
+    <div className="flex w-[30%] flex-col">
+      <div className="space-y-4 mb-10">
+        <div className="flex justify-center">
+          <img src={Logo} alt="InStall Logo" className="w-[50%]" />
+        </div>
+        <h1 className="font-extrabold text-center text-3xl text-primary_text">
+          InStall
+        </h1>
+      </div>
       <div className="w-full flex flex-col justify-between">
-        <InputField name="username" placeholder="Username" icon="pi-user" />
+        <InputField
+          name="username"
+          placeholder="Username"
+          icon="pi-user"
+          className="bg-inputfield_color text-secondary px-4 py-4 mb-5 rounded-full shadow-md"
+        />
         <InputField
           name="password"
           placeholder="Password"
           type="password"
           icon="pi-lock"
+          className="bg-inputfield_color text-secondary px-4 py-4 mb-5 rounded-full shadow-md"
         />
       </div>
-      <div className="mt-2 w-full flex flex-col justify-between">
+      <div className="w-full flex flex-col justify-between">
         {/* <PrimaryButton buttonText={"Log In"} /> */}
         <Button
           label="Log In"

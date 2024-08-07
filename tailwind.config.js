@@ -14,9 +14,12 @@ module.exports = {
         // dark: "#212121",
         primary: "#8cc63f",
         primary_hover: "#9ee245",
+        primary_text: "#FFFFDE",
         secondary: "#545649",
         background_color: "#128b31",
+        background_secondary: "#F4FAD5",
         inputfield_color: "#f4fad5",
+        button_green: "#89C587",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
