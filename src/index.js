@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./app/app";
 import reportWebVitals from "./reportWebVitals";
 
-import "./index.scss";
+import "./tailwind.scss";
 import "primeicons/primeicons.css";
+// import "./index.scss";
 // import "primereact/resources/themes/lara-light-green/theme.css";
 // import "primereact/resources/primereact.min.css";
 
