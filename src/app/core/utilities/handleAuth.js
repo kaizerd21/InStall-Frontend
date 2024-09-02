@@ -10,10 +10,22 @@ export async function handleSignin(reqBody) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
     })
-    .catch((err) => {});
+    .catch((err) => { });
 
   return {
     success: true,
     message: "Sign in successful",
   };
+}
+
+
+export async function handleSignout() {
+
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+
+  return {
+    success: true,
+    message: "Signed out",
+  }
 }

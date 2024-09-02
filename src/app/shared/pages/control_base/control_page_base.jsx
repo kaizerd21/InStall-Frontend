@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import DashboardHeader from "../../components/header/header";
 import SideMenu from "../../components/sideMenu/sideMenu";
 
-export default function ControlPageBase({}) {
+export default function ControlPageBase() {
   return (
     <div className="h-screen flex">
       <SideMenu className={"w-[15%] bg-white"} />

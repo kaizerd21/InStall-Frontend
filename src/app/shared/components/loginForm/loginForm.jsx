@@ -17,8 +17,8 @@ export function LoginForm() {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    const { success } = handleSignin(userData);
+  const handleSubmit = async () => {
+    const { success } = await handleSignin(userData);
     if (success) {
       navigate("/admin/dashboard");
     }

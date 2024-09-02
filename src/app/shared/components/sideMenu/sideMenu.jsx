@@ -19,7 +19,7 @@ export default function SideMenu({ className }) {
         </div>
       </div>
       <div>
-        <PanelMenu className="right-arrow-panelmenu" model={AdminMenu} />
+        {/* <PanelMenu className="right-arrow-panelmenu" model={AdminMenu} /> */}
       </div>
     </div>
   );
