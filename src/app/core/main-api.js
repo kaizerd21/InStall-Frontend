@@ -1,10 +1,17 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { authHeaders } from "./query/auth-headers";
 import { AuthFunctions } from "./query/login-query";
 
+export const authToken = localStorage.getItem('authToken')
+
+export const AUTH_HEADERS = {
+  headers: {
+    Authorization: `Bearer ${authToken}`
+  },
+}
+export const BASE_URL = process.env.REACT_APP_BASE_URL
+
 export function useAxiosInstance() {
-  const navigate = useNavigate()
 
   const { handleLogout } = AuthFunctions()
 

@@ -9,7 +9,6 @@ export default function SideMenu() {
   const user = JSON.parse(localStorage.getItem('user'))
   const { menuItems } = getMenuItems(user.userType)
 
-
   return (
     <div className="flex flex-col items-center h-full shadow-lg">
       <div className="flex justify-center items-center bg-background_color h-28 w-full">
@@ -23,6 +22,7 @@ export default function SideMenu() {
           {menuItems.map((menuItem) => (
             <div key={menuItem.path} id={menuItem.path}>
               <NavLink
+                end
                 to={menuItem.path}
                 className="py-2 px-5 flex justify-between items-center text-2xl"
               >
@@ -38,6 +38,7 @@ export default function SideMenu() {
                 <div className="flex flex-col">
                   {menuItem.children?.map((subMenu) => (
                     <NavLink
+                      end
                       to={subMenu.path}
                       key={subMenu.path}
                       className={({ isActive, isPending }) =>

@@ -9,9 +9,9 @@ export function AuthShell() {
       <div className="sm:w-1/6">
         <SideMenu />
       </div>
-      <div className="flex-1 flex flex-col bg-inputfield_color">
+      <div className="flex-1 flex flex-col bg-inputfield_color h-full">
         <Header />
-        <div className="py-5 px-10">
+        <div className="h-full py-5 px-10 relative overflow-y-scroll"> {/* make relative for modal */}
           <Outlet />
         </div>
       </div>

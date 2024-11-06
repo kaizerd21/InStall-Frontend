@@ -33,29 +33,34 @@ export function CreateStallUnit() {
     <form onSubmit={handleSubmit(handleCreateStallUnit)} className="py-5 space-y-5">
       <Card>
         <h1 className="text-2xl font-semibold text-green-700">Create Stall Unit</h1>
-        <div className="flex flex-col my-5 space-y-2">
+        <div className="flex flex-col w-1/2 my-5 space-y-2">
           <InputFieldSecondary
+            title={"Property Name"}
+            customInputClasses={'w-2/3'}
             placeholder={"Property Name"}
             name="stallName"
             type="text"
             register={register}
           />
-          <div className="flex space-x-5">
-            <InputFieldSecondary
-              placeholder={"Monthly Rent"}
-              name="rentalFee"
-              type="string"
-              register={register}
-            />
-            <DropDown
-              name="location"
-              rounded={false}
-              options={locations}
-              selected={'admin'}
-              register={register}
-            />
-          </div>
           <InputFieldSecondary
+            title={"Monthly Rent"}
+            customInputClasses={'w-2/3'}
+            placeholder={"Monthly Rent"}
+            name="rentalFee"
+            type="string"
+            register={register}
+          />
+          <DropDown
+            title={"Location"}
+            customInputClasses={'w-2/3'}
+            name="location"
+            rounded={false}
+            options={locations}
+            register={register}
+          />
+          <InputFieldSecondary
+            title={"Description"}
+            customInputClasses={'w-2/3'}
             placeholder={"Description"}
             name="description"
             type="text"
@@ -66,8 +71,10 @@ export function CreateStallUnit() {
       </Card>
       <div className="flex justify-end">
         <div className="flex space-x-2">
-          <SecondaryButton buttonText={"Cancel"} handleOnClick={() => navigate('/management/stall-units')} />
-          <PrimaryButton buttonText={"Create"} />
+          <a
+            href='/management/accounts'
+            className="bg-secondary px-4 py-2 text-white rounded-full shadow-md">Cancel</a>
+          <PrimaryButton buttonText={"Create"} type="submit" />
         </div>
       </div>
     </form>

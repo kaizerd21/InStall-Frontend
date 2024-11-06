@@ -53,31 +53,37 @@ export function EditStallUnit() {
     <form onSubmit={handleSubmit(updateStall)} className="py-5 space-y-5">
       <Card>
         <h1 className="text-2xl font-semibold text-green-700">Edit Stall Unit</h1>
-        <div className="flex flex-col my-5 space-y-2">
+        <div className="flex flex-col w-1/2 my-5 space-y-2">
           <InputFieldSecondary
+            title={"Property Name"}
+            customInputClasses={'w-2/3'}
             placeholder={"Property Name"}
             name="stallName"
             type="text"
             register={register}
             defaultValue={formData?.stallName}
           />
-          <div className="flex space-x-5">
-            <InputFieldSecondary
-              placeholder={"Monthly Rent"}
-              name="rentalFee"
-              type="string"
-              register={register}
-              defaultValue={formData?.rentalFee.toString()}
-            />
-            <DropDown
-              name="location"
-              rounded={false}
-              options={locations}
-              selected={formData?.location}
-              register={register}
-            />
-          </div>
           <InputFieldSecondary
+            title={"Monthly Rent"}
+            customInputClasses={'w-2/3'}
+            placeholder={"Monthly Rent"}
+            name="rentalFee"
+            type="string"
+            register={register}
+            defaultValue={formData?.rentalFee.toString()}
+          />
+          <DropDown
+            title={"Location"}
+            customInputClasses={'w-2/3'}
+            name="location"
+            rounded={false}
+            options={locations}
+            selected={formData?.location}
+            register={register}
+          />
+          <InputFieldSecondary
+            title={"Description"}
+            customInputClasses={'w-2/3'}
             placeholder={"Description"}
             name="description"
             type="text"

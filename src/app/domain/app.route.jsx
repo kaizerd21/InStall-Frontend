@@ -13,6 +13,19 @@ import { ViewStallUnit } from "./stall-units/view-stall-unit/view-stall-unit";
 import { EditStallUnit } from "./stall-units/edit-stall-unit/edit-stall-unit";
 import { Tenants } from "./tenants/tenants";
 import { ListTenants } from "./tenants/list-tenants/list-tenants";
+import { CreateTenant } from "./tenants/create-tenant/create-tenant";
+import { AssignTenantToStall } from "./tenants/assign-tenant/assign-tenant-to-stall";
+import MainElectricity from "./electricity-invoice/electricity-invoice";
+import ListElectricityInvoices from "./electricity-invoice/list-electricity-invoice/list-electricity-invoice";
+import CreateElectricityInvoice from "./electricity-invoice/create-electricity-invoice/create-electricity-invoice";
+import Invoices from "./invoices/invoice";
+import ListInvoiceMonths from "./invoices/list-invoice/list-invoice-months";
+import CreateInvoice from "./invoices/create-invoice/create-invoice";
+import ListInvoices from "./invoices/list-invoice/list-invoices";
+import PayDueInvoicesMain from "./invoices/pay-invoice/pay-due-invoices.main";
+import ListInvoicesForPayment from "./invoices/pay-invoice/list-invoices-for-payment";
+import PayInvoice from "./invoices/pay-invoice/pay-invoice";
+import InvoiceReceipt from "./invoices/pay-invoice/invoice-receipt";
 
 const router = createBrowserRouter([
   {
@@ -40,32 +53,90 @@ const router = createBrowserRouter([
                 path: "create-account",
                 element: <CreateAccount />,
               },
+              {
+                path: "approval-queue",
+                element: null,
+              },
+              {
+                path: "archived-accounts",
+                element: null,
+              },
             ],
           },
           // TODO
           {
-            path: "approval-queue",
-            element: null,
-          },
-          {
-            path: "archived-accounts",
-            element: null,
-          },
-          {
             path: "all-invoices",
-            element: null,
-          },
-          {
-            path: "ledger",
-            element: null,
+            element: <Invoices />,
+            children: [
+              {
+                path: "",
+                element: <ListInvoiceMonths />,
+              },
+              {
+                path: "main-electricity",
+                element: <ListElectricityInvoices />,
+              },
+              {
+                path: "create-electricity-invoice",
+                element: <CreateElectricityInvoice />,
+              },
+              {
+                path: "create-invoice",
+                element: <CreateInvoice />,
+              },
+              {
+                path: "list-invoice",
+                element: <ListInvoiceMonths />,
+              },
+              {
+                path: "view-invoices/:month/:year",
+                element: <ListInvoices />,
+              },
+              {
+                path: "view-invoice/:id",
+                element: <PayInvoice />,
+              },
+              {
+                path: "archived-invoices",
+                element: <ListInvoiceMonths status="archived" />,
+              },
+              {
+                path: "archived-invoices/:month/:year",
+                element: <ListInvoices status="archived" />,
+              },
+              {
+                path: "pay-due-invoices",
+                element: <PayDueInvoicesMain />,
+                children: [
+                  {
+                    path: "",
+                    element: <ListInvoicesForPayment />
+                  },
+                  {
+                    path: "view-invoice/:id",
+                    element: <PayInvoice payInvoice={true} />
+                  }
+                ]
+              },
+              {
+                path: "view-receipt/:id",
+                element: <InvoiceReceipt />,
+              },
+              {
+                path: "ledger",
+                element: null,
+              },
+            ]
           },
           {
             path: "rental-income",
             element: null,
-          },
-          {
-            path: "unpaid-invoices",
-            element: null,
+            children: [
+              {
+                path: "unpaid-invoices",
+                element: null,
+              },
+            ]
           },
           // TODO
           {
@@ -87,6 +158,10 @@ const router = createBrowserRouter([
               {
                 path: 'edit-stall-unit/:stallID',
                 element: <EditStallUnit />
+              },
+              {
+                path: 'archived-stall-units/',
+                element: null
               }
             ]
           },
@@ -100,10 +175,14 @@ const router = createBrowserRouter([
               },
               {
                 path: 'create-tenant',
-                element: null
+                element: <CreateTenant />
               },
               {
                 path: 'assign-stall-unit',
+                element: <AssignTenantToStall />
+              },
+              {
+                path: 'archived-tenants',
                 element: null
               },
             ]

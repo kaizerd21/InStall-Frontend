@@ -21,11 +21,11 @@ export const adminMenuItems = [
       },
       {
         title: "Approval Queue",
-        path: "approval-queue",
+        path: "accounts/approval-queue",
       },
       {
         title: "Archived Accounts",
-        path: "archived-accounts",
+        path: "accounts/archived-accounts",
       },
     ],
   },
@@ -46,13 +46,13 @@ export const adminMenuItems = [
       },
       {
         title: "Ledger",
-        path: "ledger",
+        path: "all-invoices/ledger",
       },
     ],
   },
   {
     title: "Reports",
-    // path: "reports",
+    path: "rental-income",
     icon: <HiOutlineDocumentReport style={{ color: "#128b31" }} />,
     showDropDown: false,
     children: [
@@ -62,7 +62,7 @@ export const adminMenuItems = [
       },
       {
         title: "Unpaid Invoices",
-        path: "unpaid-invoices",
+        path: "rental-income/unpaid-invoices",
       },
     ],
   },
@@ -74,29 +74,24 @@ export const auditClerkMenuItems = [
     icon: <LuLayoutDashboard style={{ color: "#128b31" }} />,
   },
   {
-    title: "Accounts",
-    icon: <VscAccount style={{ color: "#128b31" }} />,
-    path: "accounts",
-    showDropDown: false,
-    children: [
-      {
-        title: "Accounts",
-        path: "accounts",
-      },
-      {
-        title: "Approval Queue",
-        path: "approval-queue",
-      },
-      {
-        title: "Archived Accounts",
-        path: "archived-accounts",
-      },
-    ],
-  },
-  {
     title: "Stall Units",
     path: "stall-units",
     icon: <HiOutlineBuildingStorefront style={{ color: "#128b31" }} />,
+    showDropDown: false,
+    children: [
+      {
+        title: "Create Stall Unit",
+        path: "stall-units/create-stall-unit",
+      },
+      {
+        title: "View Stall Units",
+        path: "stall-units",
+      },
+      {
+        title: "Archived Stall Units",
+        path: "stall-units/archived-stall-units",
+      },
+    ],
   },
   {
     title: "Tenants",
@@ -104,16 +99,20 @@ export const auditClerkMenuItems = [
     icon: <HiOutlineBuildingStorefront style={{ color: "#128b31" }} />,
     children: [
       {
+        title: "Register Tenant",
+        path: "tenants/create-tenant"
+      },
+      {
+        title: "Assign Stall Unit",
+        path: "tenants/assign-stall-unit",
+      },
+      {
         title: "View Tenants",
         path: "tenants"
       },
       {
-        title: "Register Tenant",
-        path: "create-tenant",
-      },
-      {
-        title: "Assign Stall Unit",
-        path: "assign-stall-unit",
+        title: "Archived Tenants",
+        path: "tenants/archived-tenants"
       },
     ]
   },
@@ -124,18 +123,30 @@ export const auditClerkMenuItems = [
     showDropDown: false,
     children: [
       {
-        title: "All Invoices",
-        path: "all-invoices",
+        title: "Electricity",
+        path: "all-invoices/main-electricity",
+      },
+      {
+        title: "Create Invoice",
+        path: "all-invoices/create-invoice",
+      },
+      {
+        title: "View Invoices",
+        path: "all-invoices/list-invoice",
+      },
+      {
+        title: "Archived Invoices",
+        path: "all-invoices/archived-invoices",
       },
       {
         title: "Ledger",
-        path: "ledger",
+        path: "all-invoices/ledger",
       },
     ],
   },
   {
     title: "Reports",
-    // path: "reports",
+    path: "rental-income",
     icon: <HiOutlineDocumentReport style={{ color: "#128b31" }} />,
     showDropDown: false,
     children: [
@@ -145,17 +156,79 @@ export const auditClerkMenuItems = [
       },
       {
         title: "Unpaid Invoices",
-        path: "unpaid-invoices",
+        path: "rental-income/unpaid-invoices",
       },
     ],
   },
 ];
 
+export const accountingClerkMenuItems = [
+  {
+    title: "Dashboard",
+    icon: <LuLayoutDashboard style={{ color: "#128b31" }} />,
+  },
+  {
+    title: "Tenants",
+    path: "tenants",
+    icon: <HiOutlineBuildingStorefront style={{ color: "#128b31" }} />,
+  },
+  {
+    title: "Billings",
+    path: "all-invoices",
+    icon: <TbBusinessplan style={{ color: "#128b31" }} />,
+    showDropDown: false,
+    children: [
+      {
+        title: "View Invoices",
+        path: "all-invoices",
+      },
+      {
+        title: "Pay Due Invoices",
+        path: "all-invoices/pay-due-invoices",
+      },
+      {
+        title: "Ledger",
+        path: "all-invoices/ledger",
+      },
+    ],
+  },
+];
+
+export const tenantMenuItems = [
+  {
+    title: "Dashboard",
+    icon: <LuLayoutDashboard style={{ color: "#128b31" }} />,
+  },
+  {
+    title: "Billings",
+    path: "all-invoices",
+    icon: <TbBusinessplan style={{ color: "#128b31" }} />,
+    showDropDown: false,
+    children: [
+      {
+        title: "View Invoices",
+        path: "all-invoices",
+      },
+      {
+        title: "Ledger",
+        path: "ledger",
+      },
+    ],
+  },
+];
 export function getMenuItems(userType) {
   let menuItems;
   switch (userType) {
     case ('audit-clerk'):
       menuItems = auditClerkMenuItems;
+      break;
+
+    case ('accounting-clerk'):
+      menuItems = accountingClerkMenuItems;
+      break;
+
+    case ('tenant'):
+      menuItems = tenantMenuItems;
       break;
 
     default:

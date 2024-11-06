@@ -77,7 +77,9 @@ export function CreateAccount() {
       </Card>
       <div className="flex justify-end">
         <div className="flex space-x-2">
-          <SecondaryButton buttonText={"Cancel"} handleOnClick={() => navigate('/management/accounts')} />
+          <a
+            href='/management/accounts'
+            className="bg-secondary px-4 py-2 text-white rounded-full shadow-md">Cancel</a>
           <PrimaryButton buttonText={"Register"} />
         </div>
       </div>
