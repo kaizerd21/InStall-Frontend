@@ -20,7 +20,7 @@ export function ListStallUnits({ isArchived = false }) {
 
 
   const fetchStallUnits = async () => {
-    const response = await customAxiosInstance.get(`/stall-units${isArchived ? '?status=archived' : `?status=`}${searchTerm ? `&searchTerm=${searchTerm}` : ''}`)
+    const response = await customAxiosInstance.get(`/stall-units${isArchived ? '?status=archived' : ``}${searchTerm && `&searchTerm=${searchTerm}`}`)
     console.log(response.data)
     return response.data
   }
@@ -31,8 +31,8 @@ export function ListStallUnits({ isArchived = false }) {
     error,
     refetch
   } = useQuery({
-    staleTime: 3000,
-    queryKey: isArchived ? "listArchivedUnits" : "listStallUnits",
+    staleTime: 0,
+    queryKey: "listStallUnits",
     queryFn: fetchStallUnits
   })
 
@@ -95,15 +95,9 @@ export function ListStallUnits({ isArchived = false }) {
     </DataTable>
   )
 
-
   return (
     <div>
-      {(user.userType === "audit-clerk" && !isArchived) && showAddUnit}
-      {isArchived ? (
-        <div>
-          <h2 className="text-lg my-2">Archived Units</h2>
-        </div>
-      ) : null}
+      {user.userType === "audit-clerk" && showAddUnit}
       <Card>
         <div className="flex justify-end mb-4">
           {searchField}

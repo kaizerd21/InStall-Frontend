@@ -168,8 +168,8 @@ const router = createBrowserRouter([
                 element: <EditStallUnit />
               },
               {
-                path: 'archived-stall-units/',
-                element: null
+                path: 'archived-stall-units',
+                element: <ListStallUnits isArchived={true} />
               }
             ]
           },
@@ -195,7 +195,7 @@ const router = createBrowserRouter([
               },
               {
                 path: 'archived-tenants',
-                element: null
+                element: <ListTenants isArchived={true} />
               },
             ]
           },

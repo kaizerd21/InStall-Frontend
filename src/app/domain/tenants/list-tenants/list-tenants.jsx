@@ -13,14 +13,14 @@ import { DropDown } from "../../../shared/components/drop-down/drop-down";
 import TenantStatus from "../../../shared/components/tenant-status/tenant-status";
 
 
-export function ListTenants() {
+export function ListTenants({ isArchived = false }) {
   const { customAxiosInstance } = useAxiosInstance()
   const [searchTerm, setSearchTerm] = useState()
   const navigate = useNavigate()
 
 
   const fetchAccounts = async () => {
-    const response = await customAxiosInstance.get(`/tenant/get-all?searchTerm=${searchTerm}`);
+    const response = await customAxiosInstance.get(`/tenant/get-all${isArchived ? `?status=archived` : '?status='}${searchTerm ? `&searchTerm=${searchTerm}` : ''}`);
     return response.data;
   };
   const {
@@ -28,7 +28,11 @@ export function ListTenants() {
     isLoading,
     error,
     refetch
-  } = useQuery("listUsers", fetchAccounts);
+  } = useQuery({
+    staleTime: 3000,
+    queryKey: isArchived ? "listArchivedUsers" : "listUsers",
+    queryFn: fetchAccounts
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -83,10 +87,16 @@ export function ListTenants() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between">
-        <button onClick={() => navigate("create-tenant")} className="flex items-center bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
-          <FiPlus />
-          New Account
-        </button>
+        {isArchived ? (
+          <div>
+            <h2 className="text-lg my-2">Archived Tenants</h2>
+          </div>
+        ) : (
+          <button onClick={() => navigate("create-tenant")} className="flex items-center bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
+            <FiPlus />
+            New Account
+          </button>
+        )}
         <div className="flex items-center border-[1px] border-green-700 bg-white" >
           <FiSearch className="text-2xl text-green-700 m-2" />
           <input onChange={(e) => { setSearchTerm(e.target.value) }} type="text" name="searchTerm" className="h-full focus:outline-none" placeholder="Search" />
