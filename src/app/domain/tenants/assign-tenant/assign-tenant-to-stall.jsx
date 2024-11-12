@@ -42,14 +42,14 @@ export function AssignTenantToStall() {
       data
     ).then(res => {
       if (res.status === 201) {
-        navigate(`/managemnet/tenants`)
+        navigate(`/management/tenants`)
       }
     })
   };
 
   return (
     <div className="space-y-4">
-      <h1 className="text-3xl font-bold">Assign a Stall Unit to Tenant</h1>
+      <h1 className="text-xl font-semibold">Assign a Stall Unit to Tenant</h1>
       <Card>
         <form onSubmit={handleSubmit(handleAssignTenant)} className="space-y-5">
           <div className="w-1/2 space-y-3">

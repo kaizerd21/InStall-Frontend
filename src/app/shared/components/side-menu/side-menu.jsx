@@ -22,7 +22,7 @@ export default function SideMenu() {
           {menuItems.map((menuItem) => (
             <div key={menuItem.path} id={menuItem.path}>
               <NavLink
-                end
+                end={true}
                 to={menuItem.path}
                 className="py-2 px-5 flex justify-between items-center text-2xl"
               >
@@ -38,7 +38,7 @@ export default function SideMenu() {
                 <div className="flex flex-col">
                   {menuItem.children?.map((subMenu) => (
                     <NavLink
-                      end
+                      end={true}
                       to={subMenu.path}
                       key={subMenu.path}
                       className={({ isActive, isPending }) =>

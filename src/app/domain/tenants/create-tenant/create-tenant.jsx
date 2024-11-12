@@ -33,7 +33,6 @@ export function CreateTenant() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">Tenants</h1>
       <form onSubmit={handleSubmit(handleAddTenant)} className="py-5 space-y-5">
         <Card>
           <h1 className="text-2xl font-semibold text-green-700">New Tenant</h1>

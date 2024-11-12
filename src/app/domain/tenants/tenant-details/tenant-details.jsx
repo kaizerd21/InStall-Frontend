@@ -10,8 +10,8 @@ export default function TenantDetails({ tenantDetails, invoiceDetails }) {
               <img src="" alt="" className="w-[8em] h-[8em] rounded-full bg-white outline outline-green-600 outline-4" />
             </div>
             <div className="flex-1">
-              <h1 className="text-2xl font-semibold">{tenantDetails?.firstName} {tenantDetails?.lastName}</h1>
-              <div className="bg-green-600 rounded-xl w-min px-2 py-1 text-white">
+              <h1 className="text-2xl font-semibold capitalize">{tenantDetails?.firstName} {tenantDetails?.lastName}</h1>
+              <div className="bg-green-600 rounded-xl w-min px-2 py-1 text-white capitalize">
                 {tenantDetails?.status}
               </div>
               <div className="flex justify-between">

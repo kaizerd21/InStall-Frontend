@@ -12,7 +12,7 @@ import { AuthFunctions } from "../../../core/query/login-query";
 import { statusDropdown } from "../accounts";
 import TenantStatus from "../../../shared/components/tenant-status/tenant-status";
 
-export function ListAccounts() {
+export function ArchivedAccounts() {
   const { customAxiosInstance } = useAxiosInstance()
 
   const [userTypeFilter, setUserTypeFilter] = useState("admin");
@@ -36,7 +36,7 @@ export function ListAccounts() {
   ];
 
   const fetchAccounts = async () => {
-    const response = await customAxiosInstance.get(`/users?userType=${userTypeFilter}`);
+    const response = await customAxiosInstance.get(`/users/archived?userType=${userTypeFilter}`);
     return response.data;
   };
   const {
@@ -70,13 +70,9 @@ export function ListAccounts() {
   const showLoading = <div>Loading...</div>;
   const showError = <div>Error Loading...</div>;
 
-  const image = (user) => (
-    <div>
-      <image alt="user-image" className="w-20 h-20 rounded-full bg-green-600" />
-    </div>
-  )
-  const name = (user) => (
+  const imageAndName = (user) => (
     <div className="capitalize">
+      {/* <img /> */}
       {user.firstName} {user.lastName}
     </div>
   )
@@ -93,8 +89,7 @@ export function ListAccounts() {
   )
   const grid = (
     <DataTable value={users} className="border-b py-2">
-      <Column header="" body={image} />
-      <Column header="Name" body={name} />
+      <Column header="Name" body={imageAndName} />
       <Column header="Status" body={editStatus} />
       <Column header="Action" body={action} />
     </DataTable>
@@ -102,13 +97,10 @@ export function ListAccounts() {
 
   return (
     <div className="space-y-5">
+      <h1 className="text-xl font-semibold text-red-600">Archived Accounts</h1>
       {userTypeSelector}
 
-      <div className="flex justify-between">
-        <NavLink to="create-account" className="flex items-center bg-green-700 text-white font-semibold py-2 px-4 rounded-full">
-          <FiPlus />
-          New Account
-        </NavLink>
+      <div className="flex justify-end">
         <div className="flex items-center border-[1px] border-green-700 bg-white" >
           <FiSearch className="text-2xl text-green-700 m-2" />
           <input type="text" name="searchTerm" className="h-full focus:outline-none" placeholder="Search" />

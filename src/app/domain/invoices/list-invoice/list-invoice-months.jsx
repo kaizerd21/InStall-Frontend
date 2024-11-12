@@ -41,7 +41,7 @@ export default function ListInvoiceMonths({ status }) {
       <Column header="Listing #" field="id" />
       <Column header="Month" field="applicableMonth" />
       <Column header="Year" field="year" />
-      <Column header="View Invoices" body={action} />
+      <Column header="Action" body={action} />
     </DataTable>
   )
   return (

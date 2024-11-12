@@ -46,7 +46,7 @@ export default function InvoiceReceipt() {
             <h1 className="text-xl font-bold text-green-700">Billing Details:</h1>
             <div className="flex justify-between">
               <h2 className="text-green-700">Total Due:</h2>
-              <h2>P5,000.00</h2>
+              <h2>P{invoiceDetails?.totalDue}</h2>
             </div>
             <div className="flex justify-between">
               <h2 className="text-green-700">Stall Unit:</h2>
@@ -63,7 +63,7 @@ export default function InvoiceReceipt() {
             <h1 className="text-xl font-semibold">Remaining Balance</h1>
           </div>
           <div>
-            <h1 className="text-xl text-green-700">P1,234.00</h1>
+            <h1 className="text-xl text-green-700">P {invoiceDetails.balance}</h1>
           </div>
         </div>
         <div className="flex space-x-5 items-center w-full py-5">
@@ -71,7 +71,7 @@ export default function InvoiceReceipt() {
             <h1 className="text-xl font-semibold">Total Payment</h1>
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-green-700">P1,234.00</h1>
+            <h1 className="text-xl font-semibold text-green-700">P {invoiceDetails.totalPaid}</h1>
           </div>
         </div>
       </Card>

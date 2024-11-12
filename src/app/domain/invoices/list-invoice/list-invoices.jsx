@@ -80,17 +80,22 @@ export default function ListInvoices({ status, optionalFilter = null }) {
   )
   const rent = (invoice) => (
     <div>
-      P {invoice.rentalAmount}
+      P {invoice?.rentPayment?.amountPaid || 0}
     </div>
   )
   const util_and_misc = (invoice) => (
     <div>
-      P {(invoice.misc?.amount ? invoice.misc.amount : 0) + (invoice.stallElectricity?.amountIncurred ? invoice.stallElectricity?.amountIncurred : 0) + (invoice.water?.amount ? invoice.water?.amount : 0)}
+      P {(invoice.misc?.amount || 0) + (invoice.stallElectricity?.amountIncurred || 0) + (invoice.water?.amount || 0)}
     </div>
   )
   const total_payable = (invoice) => (
     <div>
-      P {(invoice.rentPayment?.amountPaid ? invoice.rentPayment?.amountPaid : 0) + (invoice.misc?.amount ? invoice.misc.amount : 0) + (invoice.stallElectricity?.amountIncurred ? invoice.stallElectricity?.amountIncurred : 0) + (invoice.water?.amount ? invoice.water?.amount : 0)}
+      P {invoice?.totalDue || 0}
+    </div>
+  )
+  const balance = (invoice) => (
+    <div>
+      P {invoice?.balance || 0}
     </div>
   )
   const grid = (
@@ -101,7 +106,7 @@ export default function ListInvoices({ status, optionalFilter = null }) {
       <Column header="Rent" body={rent} />
       <Column header="Utilities & Misc." body={util_and_misc} />
       <Column header="Total Payable" body={total_payable} />
-      <Column header="Balance" field="balance" />
+      <Column header="Balance" body={balance} />
       <Column header="Status" field="status" />
       <Column header="Action" body={action} />
     </DataTable>
