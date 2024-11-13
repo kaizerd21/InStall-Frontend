@@ -63,7 +63,7 @@ export default function InvoiceReceipt() {
             <h1 className="text-xl font-semibold">Remaining Balance</h1>
           </div>
           <div>
-            <h1 className="text-xl text-green-700">P {invoiceDetails.balance}</h1>
+            <h1 className="text-xl text-green-700">P {invoiceDetails?.balance}</h1>
           </div>
         </div>
         <div className="flex space-x-5 items-center w-full py-5">
@@ -71,7 +71,7 @@ export default function InvoiceReceipt() {
             <h1 className="text-xl font-semibold">Total Payment</h1>
           </div>
           <div>
-            <h1 className="text-xl font-semibold text-green-700">P {invoiceDetails.totalPaid}</h1>
+            <h1 className="text-xl font-semibold text-green-700">P {invoiceDetails?.totalPaid}</h1>
           </div>
         </div>
       </Card>

@@ -30,6 +30,7 @@ import ViewTenant from "./tenants/view-tenant/view-tenant";
 import { ArchivedAccounts } from "./accounts/list-accounts/archived-accounts";
 import ApprovalQueue from "./accounts/approval-queue/approval-queue";
 import ApproveTenant from "./accounts/approval-queue/approve-tenant";
+import ViewInvoice from "./invoices/view-invoice/view-invoice";
 
 const router = createBrowserRouter([
   {
@@ -102,7 +103,7 @@ const router = createBrowserRouter([
               },
               {
                 path: "view-invoice/:id",
-                element: <PayInvoice />,
+                element: <ViewInvoice />,
               },
               {
                 path: "archived-invoices",
@@ -123,7 +124,11 @@ const router = createBrowserRouter([
                   {
                     path: "view-invoice/:id",
                     element: <PayInvoice payInvoice={true} />
-                  }
+                  },
+                  // {
+                  //   path: "view-paid-invoice/:id",
+                  //   element: <PayInvoice payInvoice={false} />
+                  // }
                 ]
               },
               {
