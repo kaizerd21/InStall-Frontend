@@ -15,12 +15,12 @@ import TenantStatus from "../../../shared/components/tenant-status/tenant-status
 
 export function ListTenants({ isArchived = false }) {
   const { customAxiosInstance } = useAxiosInstance()
-  const [searchTerm, setSearchTerm] = useState()
+  const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
 
 
   const fetchAccounts = async () => {
-    const response = await customAxiosInstance.get(`/tenant/get-all${isArchived ? `?status=archived` : '?status='}${searchTerm ? `&searchTerm=${searchTerm}` : ''}`);
+    const response = await customAxiosInstance.get(`/tenant/get-all${isArchived ? `?status=archived` : '?status='}${searchTerm !== '' ? `&searchTerm=${searchTerm}` : ''}`);
     return response.data;
   };
   const {

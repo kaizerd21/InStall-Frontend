@@ -14,7 +14,7 @@ export default function ViewInvoice() {
     const response = await customAxiosInstance.get(`/invoices/${id}`)
     return response.data
   }
-  const { data: invoiceDetails, isError, isLoading } = useQuery({
+  const { data: invoiceDetails } = useQuery({
     staleTime: 10000,
     queryKey: "viewInvoiceDetails",
     queryFn: fetchInvoiceDetails

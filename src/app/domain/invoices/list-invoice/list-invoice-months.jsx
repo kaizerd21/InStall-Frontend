@@ -10,9 +10,16 @@ import { Card } from "../../../shared/components/card/card";
 export default function ListInvoiceMonths({ status }) {
   const { customAxiosInstance } = useAxiosInstance()
   const navigate = useNavigate()
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const fetchInvoices = async () => {
-    const res = await customAxiosInstance.get(`/invoices/months`);
+    let res;
+    if (user.userType === 'tenant') {
+      res = await customAxiosInstance.get(`/invoices/tenant-invoice-months/${user.id}`);
+    }
+    else {
+      res = await customAxiosInstance.get(`/invoices/months`);
+    }
     return res.data;
 
   }

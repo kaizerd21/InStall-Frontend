@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom"
 import { useAxiosInstance } from "../../../core/main-api";
 import { Card } from "../../../shared/components/card/card";
+import InvoiceStatus from "../../../shared/components/invoice-status/invoice-status";
 
 
 export default function ListInvoices({ status, optionalFilter = null }) {
@@ -15,13 +16,26 @@ export default function ListInvoices({ status, optionalFilter = null }) {
   const navigate = useNavigate()
   const { month, year } = useParams()
 
+  const user = JSON.parse(localStorage.getItem('user'))
+
   const fetchInvoices = async () => {
-    const res = await customAxiosInstance
-      .get(`/invoices?month=${optionalFilter ?
-        optionalFilter.applicableMonth :
-        month}&year=${optionalFilter ?
-          optionalFilter.year :
-          year}${status === 'archived' ? '&status=archived' : ''}`);
+    let res;
+    if (user.userType === 'tenant') {
+      res = await customAxiosInstance
+        .get(`/invoices/get-tenant-invoices/${user.id}?month=${optionalFilter ?
+          optionalFilter.applicableMonth :
+          month}&year=${optionalFilter ?
+            optionalFilter.year :
+            year}${status === 'archived' ? '&status=archived' : ''}`);
+    }
+    else {
+      res = await customAxiosInstance
+        .get(`/invoices?month=${optionalFilter ?
+          optionalFilter.applicableMonth :
+          month}&year=${optionalFilter ?
+            optionalFilter.year :
+            year}${status === 'archived' ? '&status=archived' : ''}`);
+    }
     return res.data;
 
   }
@@ -98,6 +112,11 @@ export default function ListInvoices({ status, optionalFilter = null }) {
       P {invoice?.balance || 0}
     </div>
   )
+  const statusBody = (invoice) => (
+    <div>
+      <InvoiceStatus invoiceStatus={invoice?.status} />
+    </div>
+  )
   const grid = (
     <DataTable value={invoices}>
       <Column header="#" field="id" />
@@ -107,7 +126,7 @@ export default function ListInvoices({ status, optionalFilter = null }) {
       <Column header="Utilities & Misc." body={util_and_misc} />
       <Column header="Total Payable" body={total_payable} />
       <Column header="Balance" body={balance} />
-      <Column header="Status" field="status" />
+      <Column header="Status" body={statusBody} />
       <Column header="Action" body={action} />
     </DataTable>
   )

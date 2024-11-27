@@ -58,11 +58,11 @@ export const adminMenuItems = [
     children: [
       {
         title: "Rental Income",
-        path: "rental-income",
+        path: "reports/rental-income",
       },
       {
         title: "Unpaid Invoices",
-        path: "rental-income/unpaid-invoices",
+        path: "reports/unpaid-invoices",
       },
     ],
   },
@@ -146,17 +146,17 @@ export const auditClerkMenuItems = [
   },
   {
     title: "Reports",
-    path: "rental-income",
+    path: "reports",
     icon: <HiOutlineDocumentReport style={{ color: "#128b31" }} />,
     showDropDown: false,
     children: [
       {
         title: "Rental Income",
-        path: "rental-income",
+        path: "reports/rental-income",
       },
       {
         title: "Unpaid Invoices",
-        path: "rental-income/unpaid-invoices",
+        path: "reports/unpaid-invoices",
       },
     ],
   },
@@ -211,7 +211,7 @@ export const tenantMenuItems = [
       },
       {
         title: "Ledger",
-        path: "ledger",
+        path: "all-invoices/ledger",
       },
     ],
   },

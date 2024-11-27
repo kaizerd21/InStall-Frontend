@@ -31,6 +31,10 @@ import { ArchivedAccounts } from "./accounts/list-accounts/archived-accounts";
 import ApprovalQueue from "./accounts/approval-queue/approval-queue";
 import ApproveTenant from "./accounts/approval-queue/approve-tenant";
 import ViewInvoice from "./invoices/view-invoice/view-invoice";
+import Ledger from "./invoices/ledger/ledger";
+import Reports from "./reports/reports";
+import RentalIncome from "./reports/rental-income/rental-income";
+import UnpaidInvoices from "./reports/unpaid-invoices/unpaid-invoices";
 
 const router = createBrowserRouter([
   {
@@ -137,17 +141,21 @@ const router = createBrowserRouter([
               },
               {
                 path: "ledger",
-                element: null,
+                element: <Ledger />,
               },
             ]
           },
           {
-            path: "rental-income",
-            element: null,
+            path: "reports",
+            element: <Reports />,
             children: [
               {
+                path: "rental-income",
+                element: <RentalIncome />,
+              },
+              {
                 path: "unpaid-invoices",
-                element: null,
+                element: <UnpaidInvoices />,
               },
             ]
           },
