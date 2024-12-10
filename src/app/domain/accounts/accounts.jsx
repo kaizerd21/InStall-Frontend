@@ -2,9 +2,9 @@ import { Outlet } from "react-router-dom";
 import { AccountsProvider } from "./accounts-context/accounts.context";
 
 export const statusDropdown = [
-    { title: "Active", value: 'active' },
-    { title: "Inactive", value: 'inactive' }
-  ]
+  { title: "Active", value: 'active' },
+  { title: "Inactive", value: 'inactive' }
+]
 
 export const userTypes = [
   {
@@ -19,10 +19,10 @@ export const userTypes = [
     title: "Accounting Clerk",
     value: "accounting-clerk"
   },
-  {
-    title: "Tenant",
-    value: "tenant"
-  },
+  // {
+  //   title: "Tenant",
+  //   value: "tenant"
+  // },
 ]
 
 export default function Accounts() {

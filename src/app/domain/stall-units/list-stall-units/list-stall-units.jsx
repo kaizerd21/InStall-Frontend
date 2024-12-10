@@ -76,12 +76,18 @@ export function ListStallUnits({ isArchived = false }) {
       <button onClick={() => navigate(`view-stall-unit/${stallUnit.id}`)}>
         <IoEyeSharp className="text-green-700 text-xl" />
       </button>
-      <button onClick={() => navigate(`edit-stall-unit/${stallUnit.id}`)}>
-        <FaRegEdit className="text-green-700 text-xl" />
-      </button>
-      <button>
-        <RxArchive className="text-green-700 text-xl" />
-      </button>
+      {
+        user.userType !== "admin" && (
+          <>
+            <button onClick={() => navigate(`edit-stall-unit/${stallUnit.id}`)}>
+              <FaRegEdit className="text-green-700 text-xl" />
+            </button>
+            <button>
+              <RxArchive className="text-green-700 text-xl" />
+            </button>
+          </>
+        )
+      }
     </div>
   )
   const grid = (

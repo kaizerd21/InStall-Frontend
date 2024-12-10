@@ -105,12 +105,16 @@ export function ListAccounts() {
       <button onClick={() => { handleSelectUser(user) }}>
         <IoEyeSharp className="text-green-700 text-xl" />
       </button>
-      <button onClick={() => navigate(`edit-user/${user.id}`)}>
-        <FaRegEdit className="text-green-700 text-xl" />
-      </button>
-      <button>
-        <RxArchive className="text-green-700 text-xl" />
-      </button>
+      {userTypeFilter !== "tenant" && (
+        <>
+          <button onClick={() => navigate(`edit-user/${user.id}`)}>
+            <FaRegEdit className="text-green-700 text-xl" />
+          </button>
+          <button>
+            <RxArchive className="text-green-700 text-xl" />
+          </button>
+        </>
+      )}
     </div>
   )
   const grid = (

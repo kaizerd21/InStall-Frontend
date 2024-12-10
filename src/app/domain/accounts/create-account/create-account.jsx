@@ -13,13 +13,6 @@ export function CreateAccount() {
   const navigate = useNavigate()
   const { handleCreateAccount } = useAccountsContext()
 
-
-  // Queries
-  const handleApiSuccess = (response) => {
-    const data = response.data
-    // navigate(`../${}`)
-  }
-
   // Local Functions
   const formMethod = useForm()
   const { register, handleSubmit } = formMethod
@@ -32,42 +25,49 @@ export function CreateAccount() {
         <div className="flex flex-col w-1/2 my-5 space-y-2">
           <InputFieldSecondary
             placeholder={"First Name"}
+            title={"First Name"}
             name="firstName"
             type="text"
             register={register}
           />
           <InputFieldSecondary
             placeholder={"Middle Name"}
+            title={"Middle Name"}
             name="middleName"
             type="text"
             register={register}
           />
           <InputFieldSecondary
             placeholder={"Last Name"}
+            title={"Last Name"}
             name="lastName"
             type="text"
             register={register}
           />
           <InputFieldSecondary
             placeholder={"Mobile Number"}
+            title={"Mobile Number"}
             name="mobileNumber"
             type="text"
             register={register}
           />
           <InputFieldSecondary
             placeholder={"Email Address"}
+            title={"Email Address"}
             name="email"
             type="email"
             register={register}
           />
           <InputFieldSecondary
             placeholder={"Default Password"}
+            title={"Default Password"}
             name="password"
             type="password"
             register={register}
           />
           <DropDown
             name="userType"
+            title="User Type"
             rounded={false}
             options={userTypes}
             selected={'admin'}

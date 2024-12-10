@@ -36,7 +36,7 @@ export default function ListInvoiceMonths({ status }) {
   )
   const action = (invoice) => (
     <div className="flex space-x-2">
-      <button onClick={() => navigate(`/management/all-invoices/${status === 'archived' ? 'archived-invoices' : 'view-invoices'}/${invoice.applicableMonth}/${invoice.year}`)}>
+      <button className="bg-green-600 text-white px-2 py-1 rounded-md hover:bg-green-700" onClick={() => navigate(`/management/all-invoices/${status === 'archived' ? 'archived-invoices' : 'view-invoices'}/${invoice.applicableMonth}/${invoice.year}`)}>
         View Invoices
       </button>
     </div>
